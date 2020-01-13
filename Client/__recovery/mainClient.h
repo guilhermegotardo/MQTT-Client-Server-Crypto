@@ -11,7 +11,13 @@
 class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
-	TLabel *Label1;
+	TLabel *LabelTitle;
+	TButton *BtOk;
+	TEdit *TextBoxIP;
+	TEdit *TextBoxPort;
+	TEdit *TextBoxConnect;
+	void __fastcall BtOkClick(TObject *Sender);
+
 
 private:	// User declarations
 public:		// User declarations
