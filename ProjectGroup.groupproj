@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{DD4E01D2-C207-48D3-B781-B44594E6C23C}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Client\ClienteMQTT.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ClienteMQTT">
+        <MSBuild Projects="Client\ClienteMQTT.cbproj"/>
+    </Target>
+    <Target Name="ClienteMQTT:Clean">
+        <MSBuild Projects="Client\ClienteMQTT.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ClienteMQTT:Make">
+        <MSBuild Projects="Client\ClienteMQTT.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ClienteMQTT"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ClienteMQTT:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ClienteMQTT:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
