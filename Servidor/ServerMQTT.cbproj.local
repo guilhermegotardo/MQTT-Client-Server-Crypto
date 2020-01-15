@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/01/14 15:50:07.000.596,=C:\Users\ACER\Documents\Embarcadero\Studio\Projects\Unit2.cpp</Transaction>
+    <Transaction>2020/01/14 15:50:07.000.492,=C:\Users\ACER\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2020/01/14 15:52:10.649,=C:\Users\ACER\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2020/01/14 15:52:10.722,=C:\Users\ACER\Documents\Embarcadero\Studio\Projects\Unit2.cpp</Transaction>
+    <Transaction>2020/01/14 15:52:22.584,C:\Users\ACER\Documents\Embarcadero\Studio\Projects\ServerMQTTPCH1.h=C:\Users\ACER\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2020/01/14 15:52:22.590,C:\Users\ACER\Documents\Embarcadero\Studio\Projects\ServerMQTT.cbproj=C:\Users\ACER\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
+    <Transaction>2020/01/14 15:52:52.053,C:\Users\ACER\Documents\Embarcadero\Studio\Projects\mainServer.h=C:\Users\ACER\Documents\Embarcadero\Studio\Projects\Unit2.h</Transaction>
+    <Transaction>2020/01/14 15:52:52.053,C:\Users\ACER\Documents\Embarcadero\Studio\Projects\mainServer.dfm=C:\Users\ACER\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
+    <Transaction>2020/01/14 15:52:52.053,C:\Users\ACER\Documents\Embarcadero\Studio\Projects\mainServer.cpp=C:\Users\ACER\Documents\Embarcadero\Studio\Projects\Unit2.cpp</Transaction>
+    <Transaction>2020/01/14 15:53:19.597,C:\Users\ACER\D2\Dev\001\MQTT-Client-Server-Crypto\Servidor\mainServer.h=C:\Users\ACER\Documents\Embarcadero\Studio\Projects\mainServer.h</Transaction>
+    <Transaction>2020/01/14 15:53:19.597,C:\Users\ACER\D2\Dev\001\MQTT-Client-Server-Crypto\Servidor\mainServer.cpp=C:\Users\ACER\Documents\Embarcadero\Studio\Projects\mainServer.cpp</Transaction>
+    <Transaction>2020/01/14 15:53:19.597,C:\Users\ACER\D2\Dev\001\MQTT-Client-Server-Crypto\Servidor\mainServer.dfm=C:\Users\ACER\Documents\Embarcadero\Studio\Projects\mainServer.dfm</Transaction>
+    <Transaction>2020/01/14 15:53:22.957,C:\Users\ACER\D2\Dev\001\MQTT-Client-Server-Crypto\Servidor\ServerMQTTPCH1.h=C:\Users\ACER\Documents\Embarcadero\Studio\Projects\ServerMQTTPCH1.h</Transaction>
+    <Transaction>2020/01/14 15:53:25.721,C:\Users\ACER\D2\Dev\001\MQTT-Client-Server-Crypto\Servidor\ServerMQTT.cbproj=C:\Users\ACER\Documents\Embarcadero\Studio\Projects\ServerMQTT.cbproj</Transaction>
+  </Transactions>
+</BorlandProject>

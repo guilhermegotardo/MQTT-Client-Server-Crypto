@@ -6,6 +6,9 @@
         <Projects Include="Client\ClienteMQTT.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Servidor\ServerMQTT.cbproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -23,14 +26,23 @@
     <Target Name="ClienteMQTT:Make">
         <MSBuild Projects="Client\ClienteMQTT.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="ServerMQTT">
+        <MSBuild Projects="Servidor\ServerMQTT.cbproj"/>
+    </Target>
+    <Target Name="ServerMQTT:Clean">
+        <MSBuild Projects="Servidor\ServerMQTT.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ServerMQTT:Make">
+        <MSBuild Projects="Servidor\ServerMQTT.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="ClienteMQTT"/>
+        <CallTarget Targets="ClienteMQTT;ServerMQTT"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ClienteMQTT:Clean"/>
+        <CallTarget Targets="ClienteMQTT:Clean;ServerMQTT:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ClienteMQTT:Make"/>
+        <CallTarget Targets="ClienteMQTT:Make;ServerMQTT:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

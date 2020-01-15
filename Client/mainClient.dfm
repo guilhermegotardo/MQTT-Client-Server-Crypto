@@ -59,4 +59,12 @@ object Form1: TForm1
     TabOrder = 3
     Text = 'Disconnected'
   end
+  object TextBoxDebug: TEdit
+    Left = 344
+    Top = 202
+    Width = 161
+    Height = 21
+    TabOrder = 4
+    Text = 'Socket Offline'
+  end
 end
