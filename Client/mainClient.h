@@ -28,6 +28,7 @@ private:	// User declarations
 
 public:
 	__fastcall TForm1(TComponent* Owner);
+	__fastcall ~TForm1();
 	WSADATA wsaData;
 	struct addrinfo *sockResult = {},
 				*ptr = {},

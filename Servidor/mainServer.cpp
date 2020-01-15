@@ -36,8 +36,10 @@ __fastcall TForm2::TForm2(TComponent* Owner)
 //---------------------------------------------------------------------------
 TForm2::~TForm2()
 {
-			closesocket(ListenSocket);
-		WSACleanup();
+	closesocket(ListenSocket);
+	WSACleanup();
+	delete ptr;
+    delete sockResult;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm2::BtOnClick(TObject *Sender)
