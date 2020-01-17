@@ -15,7 +15,6 @@ __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner)
 	int result;
 	sockResult = NULL;
 	ptr = NULL;
-	Form1->LabelTitle->Caption = "construtor";
 	result = WSAStartup(MAKEWORD(2,2), &wsaData);
 
 	if(result != 0)
@@ -45,8 +44,6 @@ void __fastcall TForm1::BtOkClick(TObject *Sender)
 {
 int result;
 sockaddr_in clientService;
-
-	Form1->LabelTitle->Caption = "teste";
 
 	ConnectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 

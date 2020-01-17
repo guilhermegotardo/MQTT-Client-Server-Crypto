@@ -30,6 +30,7 @@ public:		// User declarations
 				hints = {};
 
 	SOCKET ListenSocket;
+	SOCKET AcceptSocket;
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm2 *Form2;

@@ -15,7 +15,6 @@ __fastcall TForm2::TForm2(TComponent* Owner)
 	int result;
 	sockResult = NULL;
 	ptr = NULL;
-	Form2->textBoxDebug->Text = "construtor";
 	result = WSAStartup(MAKEWORD(2,2), &wsaData);
 
 	if(result != 0)
@@ -76,7 +75,16 @@ sockaddr_in service;
 		Application->Terminate();
 	}
 
-	Form2->textBoxStatus->Text = "Server Online";
+	while(1)
+	{
+		AcceptSocket = accept(ListenSocket, NULL, NULL);
+		if (AcceptSocket > 0)
+		{
+			Form2->textBoxStatus->Text = "Conectado ao cliente";
+			break;
+		}
+	}
+
 }
 //---------------------------------------------------------------------------
 
