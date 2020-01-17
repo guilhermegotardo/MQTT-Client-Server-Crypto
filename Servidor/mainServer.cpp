@@ -45,40 +45,32 @@ TForm2::~TForm2()
 void __fastcall TForm2::BtOnClick(TObject *Sender)
 {
 int result;
+sockaddr_in service;
 
-	result = getaddrinfo(NULL, "27015", &hints, &sockResult);
-	if(result != 0)
-	{
+	ListenSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+
+	if (ListenSocket == INVALID_SOCKET) {
 		WSACleanup();
 		Application->Terminate();
-
 	}
 
-	else
-	{
-		ListenSocket = socket(sockResult->ai_family, sockResult->ai_socktype, sockResult->ai_protocol);
-	}
+	service.sin_family = AF_INET;
+    service.sin_addr.s_addr = inet_addr("127.0.0.1");
+	service.sin_port = htons(27015);
 
-	result = bind( ListenSocket, sockResult->ai_addr, (int)sockResult->ai_addrlen);
+	result = bind( ListenSocket, (SOCKADDR*)&service, sizeof(service));
 
 	if (result == SOCKET_ERROR)
 	{
-		freeaddrinfo(sockResult);
 		closesocket(ListenSocket);
 		WSACleanup();
 		Application->Terminate();
-	}
-	else
-	{
-		Form2->textBoxDebug->Text = result;
-		freeaddrinfo(sockResult);
 	}
 
 	result = listen( ListenSocket, SOMAXCONN );
 
 	if (result == SOCKET_ERROR)
 	{
-		freeaddrinfo(sockResult);
 		closesocket(ListenSocket);
 		WSACleanup();
 		Application->Terminate();

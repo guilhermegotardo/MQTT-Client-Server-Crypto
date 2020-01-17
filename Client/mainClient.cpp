@@ -9,10 +9,8 @@
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
-
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
-	: TForm(Owner)
+__fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner)
 {
 	int result;
 	sockResult = NULL;
@@ -46,47 +44,31 @@ __fastcall TForm1::~TForm1()
 void __fastcall TForm1::BtOkClick(TObject *Sender)
 {
 int result;
+sockaddr_in clientService;
 
 	Form1->LabelTitle->Caption = "teste";
 
-	result = getaddrinfo("127.0.0.1", "27015", &hints, &sockResult);
-	if(result != 0)
-	{
-		Application->Terminate();
-	}
-
-	else
-	{
-		ptr=sockResult;
-		ConnectSocket = socket(ptr->ai_family, ptr->ai_socktype,ptr->ai_protocol);
-	}
-
-	if (ConnectSocket == INVALID_SOCKET)
-	{
-		freeaddrinfo(sockResult);
-		WSACleanup();
-		Application->Terminate();
-	}
-
-	Form1->TextBoxDebug->Text = "Socket Online";
-
-	result = connect( ConnectSocket, ptr->ai_addr, (int)ptr->ai_addrlen);
-
-	if (result == SOCKET_ERROR)
-	{
-		closesocket(ConnectSocket);
-		ConnectSocket = INVALID_SOCKET;
-		Application->Terminate();
-	}
-
-	freeaddrinfo(sockResult);
+	ConnectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
 	if (ConnectSocket == INVALID_SOCKET)
 	{
 		WSACleanup();
-        Application->Terminate();
+		Application->Terminate();
 	}
 
+	clientService.sin_family = AF_INET;
+	clientService.sin_addr.s_addr = inet_addr("127.0.0.1");
+	clientService.sin_port = htons(27015);
+
+	result = connect( ConnectSocket, (SOCKADDR *)&clientService, sizeof(clientService) );
+
+	if(result == SOCKET_ERROR)
+	{
+		WSACleanup();
+		Application->Terminate();
+	}
+
+	Form1->TextBoxDebug->Text = "Conectado ao socket";
 }
 //---------------------------------------------------------------------------
 
