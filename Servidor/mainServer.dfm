@@ -29,7 +29,7 @@ object Form2: TForm2
   object textBoxStatus: TEdit
     Left = 72
     Top = 32
-    Width = 89
+    Width = 137
     Height = 21
     TabOrder = 0
     Text = 'Server Offline'
@@ -39,16 +39,16 @@ object Form2: TForm2
     Top = 72
     Width = 49
     Height = 25
-    Caption = 'Ok'
+    Caption = 'Connect'
     TabOrder = 1
     OnClick = BtOnClick
   end
   object textBoxDebug: TEdit
-    Left = 272
-    Top = 120
+    Left = 408
+    Top = 202
     Width = 89
     Height = 21
     TabOrder = 2
-    Text = 'Teste'
+    Text = 'Debug'
   end
 end

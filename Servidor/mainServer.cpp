@@ -44,7 +44,11 @@ TForm2::~TForm2()
 void __fastcall TForm2::BtOnClick(TObject *Sender)
 {
 int result;
+char recvbuf[512];
+int recvbuflen = 512;
 sockaddr_in service;
+AnsiString *recText;
+
 
 	ListenSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
@@ -83,7 +87,20 @@ sockaddr_in service;
 			Form2->textBoxStatus->Text = "Conectado ao cliente";
 			break;
 		}
+
 	}
+
+	do
+	{
+		result = recv(AcceptSocket, recvbuf, recvbuflen, 0);
+
+		if ( result > 0 )
+		{
+			Form2->textBoxDebug->Text = recvbuf;
+		}
+
+	} while( result > 0 );
+
 
 }
 //---------------------------------------------------------------------------

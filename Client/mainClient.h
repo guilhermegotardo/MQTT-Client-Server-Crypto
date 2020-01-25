@@ -18,11 +18,13 @@ __published:	// IDE-managed Components
 	TLabel *LabelTitle;
 	TButton *BtOk;
 	TEdit *TextBoxIP;
-	TEdit *TextBoxPort;
 	TEdit *TextBoxConnect;
 	TEdit *TextBoxDebug;
+	TEdit *TextBoxPort;
+	TEdit *TextBoxSendM;
+	TButton *BtSendM;
 	void __fastcall BtOkClick(TObject *Sender);
-
+	void __fastcall BtSendMClick(TObject *Sender);
 
 
 private:	// User declarations

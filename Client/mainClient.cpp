@@ -44,11 +44,16 @@ __fastcall TForm1::~TForm1()
 void __fastcall TForm1::BtOkClick(TObject *Sender)
 {
 int result, portNmbInt = 0;
+char *iPAddress;
 sockaddr_in clientService;
-char *buffer;
-string portNumber;
+AnsiString  *portNumber, *ipNumber;
+
 
 	ConnectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+	portNumber = new AnsiString(Form1->TextBoxPort->Text);
+	ipNumber = new AnsiString(Form1->TextBoxIP->Text);
+	iPAddress = new char[sizeof ipNumber];
+	iPAddress = ipNumber->c_str();
 
 	if (ConnectSocket == INVALID_SOCKET)
 	{
@@ -57,16 +62,10 @@ string portNumber;
 	}
 
 	clientService.sin_family = AF_INET;
-	clientService.sin_addr.s_addr = inet_addr("127.0.0.1");
-	//clientService.sin_port = htons(27015);    TextBoxPort
-	//buffer = new char[sizeof("27015")+1];
-	//Form1->TextBoxDebug->GetTextBuf(buffer,sizeof("27015"));
-	portNumber =    Form1->TextBoxDebug->Text;
-	portNmbInt =
-	clientService.sin_port = htons(27015);
+	clientService.sin_addr.s_addr = inet_addr(iPAddress);
+	clientService.sin_port = htons(portNumber->ToInt());
 
-
-	result = connect( ConnectSocket, (SOCKADDR *)&clientService, sizeof(clientService) );
+	result = connect( ConnectSocket,(SOCKADDR *)&clientService, sizeof(clientService) );
 
 	if(result == SOCKET_ERROR)
 	{
@@ -74,8 +73,39 @@ string portNumber;
 		Application->Terminate();
 	}
 
-	//Form1->TextBoxDebug->Text = "Conectado ao socket";
+	Form1->TextBoxConnect->Text = "Connected";
+
+	delete  portNumber;
+	delete	ipNumber;
+	delete  iPAddress;
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TForm1::BtSendMClick(TObject *Sender)
+{
+int result;
+char sendbuf[8] = "Teste01";
+
+
+	result = send( ConnectSocket, sendbuf, (int)strlen(sendbuf), 0 );
+	if (result == SOCKET_ERROR)
+	{
+		closesocket(ConnectSocket);
+		WSACleanup();
+		Application->Terminate();
+	}
+
+	result = shutdown(ConnectSocket, SD_SEND);
+
+	if (result == SOCKET_ERROR)
+	{
+		closesocket(ConnectSocket);
+		WSACleanup();
+		Application->Terminate();
+	}
+
+	Form1->TextBoxDebug->Text = "Aplicacao Finalizada!";
+}
+//---------------------------------------------------------------------------
 
