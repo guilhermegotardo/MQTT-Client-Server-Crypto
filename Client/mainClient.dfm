@@ -49,7 +49,7 @@ object Form1: TForm1
     Width = 41
     Height = 21
     TabOrder = 2
-    Text = 'Port'
+    Text = '27015'
   end
   object TextBoxConnect: TEdit
     Left = 64

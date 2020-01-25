@@ -17,6 +17,7 @@ __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner)
 	ptr = NULL;
 	result = WSAStartup(MAKEWORD(2,2), &wsaData);
 
+
 	if(result != 0)
 	{
 		 Application->Terminate();
@@ -42,8 +43,10 @@ __fastcall TForm1::~TForm1()
 //---------------------------------------------------------------------------
 void __fastcall TForm1::BtOkClick(TObject *Sender)
 {
-int result;
+int result, portNmbInt = 0;
 sockaddr_in clientService;
+char *buffer;
+string portNumber;
 
 	ConnectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
@@ -55,7 +58,13 @@ sockaddr_in clientService;
 
 	clientService.sin_family = AF_INET;
 	clientService.sin_addr.s_addr = inet_addr("127.0.0.1");
+	//clientService.sin_port = htons(27015);    TextBoxPort
+	//buffer = new char[sizeof("27015")+1];
+	//Form1->TextBoxDebug->GetTextBuf(buffer,sizeof("27015"));
+	portNumber =    Form1->TextBoxDebug->Text;
+	portNmbInt =
 	clientService.sin_port = htons(27015);
+
 
 	result = connect( ConnectSocket, (SOCKADDR *)&clientService, sizeof(clientService) );
 
@@ -65,7 +74,7 @@ sockaddr_in clientService;
 		Application->Terminate();
 	}
 
-	Form1->TextBoxDebug->Text = "Conectado ao socket";
+	//Form1->TextBoxDebug->Text = "Conectado ao socket";
 }
 //---------------------------------------------------------------------------
 
