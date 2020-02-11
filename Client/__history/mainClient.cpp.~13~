@@ -20,10 +20,7 @@ __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner)
 
 	if(result != 0)
 	{
-		Application->NormalizeTopMosts();
-		Application->MessageBox(L"Error! Invalid socket.", L"Error",  MB_OK );
-		Application->RestoreTopMosts();
-		Application->Terminate();
+		 Application->Terminate();
 	}
 
 	else
