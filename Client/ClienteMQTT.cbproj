@@ -144,6 +144,10 @@
             <DependentOn>mainClient.h</DependentOn>
             <BuildOrder>2</BuildOrder>
         </CppCompile>
+        <CppCompile Include="SockComm.cpp">
+            <DependentOn>SockComm.h</DependentOn>
+            <BuildOrder>3</BuildOrder>
+        </CppCompile>
         <FormResources Include="mainClient.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

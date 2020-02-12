@@ -13,27 +13,30 @@ TForm1 *Form1;
 __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner)
 {
 	int result;
-	sockResult = NULL;
-	ptr = NULL;
-	result = WSAStartup(MAKEWORD(2,2), &wsaData);
 
+	result = clientSock.initSocket();
 
-	if(result != 0)
+	if(result == SOCK_INITIALIZED)
+	{
+		Application->NormalizeTopMosts();
+		Application->MessageBox(L"Error! Socket Initialized.", L"Error",  MB_OK );
+		Application->RestoreTopMosts();
+		result = false;
+	}
+
+	else if(result == SOCK_INVALID)
 	{
 		Application->NormalizeTopMosts();
 		Application->MessageBox(L"Error! Invalid socket.", L"Error",  MB_OK );
 		Application->RestoreTopMosts();
-		Application->Terminate();
+		result = false;
 	}
 
 	else
 	{
-		ZeroMemory(&hints, sizeof(hints) );
-		hints.ai_family = AF_UNSPEC;
-		hints.ai_socktype = SOCK_STREAM;
-		hints.ai_protocol = IPPROTO_TCP;
+		result = true;
 	}
-	ConnectSocket = INVALID_SOCKET;
+
 }
 //---------------------------------------------------------------------------
 __fastcall TForm1::~TForm1()
