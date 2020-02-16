@@ -3,7 +3,7 @@
         <ProjectGuid>{DD4E01D2-C207-48D3-B781-B44594E6C23C}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="Client\ClienteMQTT.cbproj">
+        <Projects Include="Client\ClientMQTT.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Servidor\ServerMQTT.cbproj">
@@ -17,14 +17,14 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="ClienteMQTT">
-        <MSBuild Projects="Client\ClienteMQTT.cbproj"/>
+    <Target Name="ClientMQTT">
+        <MSBuild Projects="Client\ClientMQTT.cbproj"/>
     </Target>
-    <Target Name="ClienteMQTT:Clean">
-        <MSBuild Projects="Client\ClienteMQTT.cbproj" Targets="Clean"/>
+    <Target Name="ClientMQTT:Clean">
+        <MSBuild Projects="Client\ClientMQTT.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="ClienteMQTT:Make">
-        <MSBuild Projects="Client\ClienteMQTT.cbproj" Targets="Make"/>
+    <Target Name="ClientMQTT:Make">
+        <MSBuild Projects="Client\ClientMQTT.cbproj" Targets="Make"/>
     </Target>
     <Target Name="ServerMQTT">
         <MSBuild Projects="Servidor\ServerMQTT.cbproj"/>
@@ -36,13 +36,13 @@
         <MSBuild Projects="Servidor\ServerMQTT.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="ClienteMQTT;ServerMQTT"/>
+        <CallTarget Targets="ClientMQTT;ServerMQTT"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ClienteMQTT:Clean;ServerMQTT:Clean"/>
+        <CallTarget Targets="ClientMQTT:Clean;ServerMQTT:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ClienteMQTT:Make;ServerMQTT:Make"/>
+        <CallTarget Targets="ClientMQTT:Make;ServerMQTT:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

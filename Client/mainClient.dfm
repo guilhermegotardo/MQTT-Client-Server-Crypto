@@ -84,7 +84,7 @@ object Form1: TForm1
   end
   object BtSendM: TButton
     Left = 272
-    Top = 88
+    Top = 86
     Width = 75
     Height = 25
     Caption = 'Ok'

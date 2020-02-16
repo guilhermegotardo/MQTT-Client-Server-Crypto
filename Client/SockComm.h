@@ -31,9 +31,8 @@ public:
 	__fastcall int restartSocket();
 	__fastcall int closeSocket();
 	__fastcall int deleteSocket();
-	__fastcall int connectToServer();
+	__fastcall int connectToServer(AnsiString portNumber, AnsiString ipNumber);
 	__fastcall int disconnectServer();
 	__fastcall int sendMsgToServer();
-
 
 };

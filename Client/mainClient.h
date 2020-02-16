@@ -35,8 +35,8 @@ __published:	// IDE-managed Components
 	TEdit *TextBoxPort;
 	TEdit *TextBoxSendM;
 	TButton *BtSendM;
-	void __fastcall BtOkClick(TObject *Sender);
 	void __fastcall BtSendMClick(TObject *Sender);
+	void __fastcall BtOkClick(TObject *Sender);
 
 
 private:	// User declarations
@@ -44,10 +44,7 @@ private:	// User declarations
 public:
 	__fastcall TForm1(TComponent* Owner);
 	__fastcall ~TForm1();
-	WSADATA wsaData;
-	struct addrinfo *sockResult = {},
-				*ptr = {},
-				hints = {};
+
 	SOCKET ConnectSocket;
     SockComm clientSock;
 };

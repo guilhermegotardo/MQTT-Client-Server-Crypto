@@ -41,77 +41,27 @@ __fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner)
 //---------------------------------------------------------------------------
 __fastcall TForm1::~TForm1()
 {
-	freeaddrinfo(sockResult);
-	WSACleanup();
-	delete ptr;
-	delete sockResult;
+
 }
 //---------------------------------------------------------------------------
+
 void __fastcall TForm1::BtOkClick(TObject *Sender)
 {
-int result, portNmbInt = 0;
-char *iPAddress;
-sockaddr_in clientService;
-AnsiString  *portNumber, *ipNumber;
+int result;
 
-
-	ConnectSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-	portNumber = new AnsiString(Form1->TextBoxPort->Text);
-	ipNumber = new AnsiString(Form1->TextBoxIP->Text);
-	iPAddress = new char[sizeof ipNumber];
-	iPAddress = ipNumber->c_str();
-
-	if (ConnectSocket == INVALID_SOCKET)
-	{
-		WSACleanup();
-		Application->Terminate();
-	}
-
-	clientService.sin_family = AF_INET;
-	clientService.sin_addr.s_addr = inet_addr(iPAddress);
-	clientService.sin_port = htons(portNumber->ToInt());
-
-	result = connect( ConnectSocket,(SOCKADDR *)&clientService, sizeof(clientService) );
-
-	if(result == SOCKET_ERROR)
-	{
-		WSACleanup();
-		Application->Terminate();
-	}
-
-	Form1->TextBoxConnect->Text = "Connected";
-
-	delete  portNumber;
-	delete	ipNumber;
-	delete  iPAddress;
+	result = clientSock.connectToServer(Form1->TextBoxPort->Text,Form1->TextBoxIP->Text);
 }
-//---------------------------------------------------------------------------
 
+//---------------------------------------------------------------------------
 
 void __fastcall TForm1::BtSendMClick(TObject *Sender)
 {
 int result;
-char sendbuf[8] = "Teste01";
 
-
-	result = send( ConnectSocket, sendbuf, (int)strlen(sendbuf), 0 );
-	if (result == SOCKET_ERROR)
-	{
-		closesocket(ConnectSocket);
-		WSACleanup();
-		Application->Terminate();
-	}
-
-	result = shutdown(ConnectSocket, SD_SEND);
-
-	if (result == SOCKET_ERROR)
-	{
-		closesocket(ConnectSocket);
-		WSACleanup();
-		Application->Terminate();
-	}
-
-	Form1->TextBoxDebug->Text = "Aplicacao Finalizada!";
+	result = clientSock.sendMsgToServer();
 }
 //---------------------------------------------------------------------------
+
+
+
 
